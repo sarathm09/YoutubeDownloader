@@ -1,0 +1,76 @@
+<DownloaderScreen>
+    urlBox: url_box
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint: (1, 0.8)
+        BoxLayout:
+            orientation: 'vertical'
+            padding: (20, 50, 20, 5)
+            size_hint: (1, 1)
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 0
+                Label:
+                    text: "YTd v2 [Kivy]"
+                    font_size: 30
+                    height: 30
+                    size_hint: (1, None)
+                    padding: (0, 0)
+                Label:
+                    text: "connecting..."
+                    font_size: 10
+                    height: 30
+                    size_hint: (1, None)
+                    padding: (0, 0)
+            TextInput:
+                id: url_box
+                height: 30
+                multiline: False
+                size_hint: (1, None)
+                on_text_validate: root.addUrl()
+            GridLayout:
+                cols: 3
+                size_hint: (1, None)
+                height: 35
+                padding: 5
+                Button:
+                    text: "Pause/Resume"
+                Button:
+                    text: "Open Downloads"
+                Button:
+                    text: "Settings"
+                    on_press:
+                        root.manager.transition.direction = 'left'
+                        root.manager.current = 'settings'
+        Label:
+            size_hint: (1, 1)
+
+
+<PlaylistWidget>
+    BoxLayout:
+        orientation: 'vertical'
+        
+
+<SettingsScreen>
+    Button:
+        text: "World"
+        on_press:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'downloader'
+
+#
+#<WindowControls>
+#    size_hint: (None, None)
+#    size: (60, 20)
+#    arrow_pos: 'bottom_mid'
+#    pos_hint: {'x': .9, 'y': 0.05}
+#    BubbleButton:
+#        text: "_"
+#        on_press: root.windowControl("min")
+#    BubbleButton:
+#        text: "^"
+#        on_press: root.windowControl("max")
+#    BubbleButton:
+#        text: "x"
+#        on_press: root.windowControl("close")

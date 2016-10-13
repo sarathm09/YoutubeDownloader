@@ -1,0 +1,60 @@
+#:import ListAdapter kivy.adapters.listadapter.ListAdapter
+#:import ListItem kivy.uix.listview.CompositeListItem
+<TestKVfile>:
+    url_box: urlBox
+    total_progress: mainProgress
+    current_progress: indiProgress
+    border: (0,0,0,0)
+
+    orientation: 'vertical'
+    Accordion
+        orientation: 'horizontal'
+        AccordionItem:
+            BoxLayout:
+                orientation: 'vertical'
+                TextInput:
+                    id: urlBox
+                    on_text_validate: root.addUrl()
+                    multiline: False
+                    height: 1
+
+                ProgressBar:
+                    id: indiProgress
+                    max: 5
+                ProgressBar:
+                    id: mainProgress
+                    max: 10
+        AccordionItem:
+            title: "Item 2"
+            PageLayout:
+                cols: 2
+                row_default_height: 5
+                Button:
+                    text: "Hello"
+                    size_hint_x: 1
+                    height: 5
+                    on_press: root.sayHello()
+                Button:
+                    text: "Hello"
+                    size_hint_x: 2
+                    height: 5
+                    on_press: root.sayHello()
+
+<newWidget>:
+    hello: helloBtn
+    Label:
+        id: helloBtn
+        text: "Hello"
+    Label:
+        text: "World"
+
+<selectList>
+    layout: layout
+    size_hint: (.5, None)
+    BoxLayout:
+        id: layout
+#    ListView:
+#        size_hint: .8, .8
+#        multiselect: True
+#        adapter:
+#            ListAdapter(data=["Item #{0}".format(i) for i in range(100)], cls=ListItem, selection_mode='multiple')
